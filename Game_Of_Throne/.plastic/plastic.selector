@@ -1,0 +1,4 @@
+repository "Game_Of_Throne/Game_Of_Throne@13469800967432@cloud"
+  path "/"
+    br "/main"
+    co "/main"

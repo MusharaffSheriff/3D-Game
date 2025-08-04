@@ -15,20 +15,24 @@ public class MonsterAI : MonoBehaviour
         if (isDead) return;
 
         float distance = Vector3.Distance(transform.position, target.position);
-
+        Debug.Log(distance);
         if (distance > attackDistance)
         {
             animator.SetBool("isWalking", true);
             animator.SetBool("isAttacking", false);
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             transform.LookAt(target);
-        }
-        else if (distance == attackDistance)
-        {
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isAttacking", true);
-        }
-    }
+            Debug.Log("moving towards target");
+			
+		}
+		else if (distance <= attackDistance)
+		{
+			Debug.Log("is attacking");
+			animator.SetBool("isWalking", false);
+			animator.SetBool("isAttacking", true);
+		}
+
+	}
 
     public void TakeDamage(float amount)
     {
